@@ -1,0 +1,12 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        if not nums:
+            return [[]]
+        output = []
+        perms = self.permute(nums[1:])
+        for perm in perms:
+            for i in range(len(perm)+1):
+                tmp = perm.copy()
+                tmp.insert(i, nums[0])
+                output.append(tmp)
+        return output
